@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
+    Reactiv
   ],
   providers: [],
   bootstrap: [AppComponent]
