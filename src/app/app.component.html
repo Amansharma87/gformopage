@@ -3,7 +3,7 @@
   <div class="st" *ngFor ="let d of d">
    <div class="pc" *ngIf="!d.showIf&&d.type=='dropdown'">
     <label >{{ d.label }}</label>
-  <select ngModel name="country"  (change)="getoptions($event)" >
+  <select  name="country"  (change)="getoptions($event)" >
   <option *ngFor="let o of d.options" [value]="o.value">{{ o.key }}</option>
 </select>
 </div>
