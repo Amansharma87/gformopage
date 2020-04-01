@@ -1,15 +1,19 @@
 <h2>Generic Form</h2>
-<form>
-  <div class="st" *ngFor ="let d of d">
-   <div class="pc" *ngIf="!d.showIf&&d.type=='dropdown'">
-    <label >{{ d.label }}</label>
-  <select  name="country"  (change)="getoptions($event)" >
-  <option *ngFor="let o of d.options" [value]="o.value">{{ o.key }}</option>
-</select>
+<form  class="box"  #f="ngForm" (ngSubmit)="onSubmit(f)">
+   <div  *ngFor ="let d of d;let i=index">
+     <div class="pc" *ngIf="(!d.showIf&&d.type=='dropdown'||object[d.name]==i)">
+       <label >{{ d.label }}</label>
+          <select   [(ngModel)]= "d.value" [name]="d.name" class="sel" (change)='onchange($event.target.value,d.name,i)'[size]="d.noOfChoices" required #check="ngModel">
+       <option *ngFor="let o of d[d.source]" [value]="o.value">{{ o.key }}</option>
+       
+   </select>
+   <div *ngIf="!check.valid&&check.touched&&d.validations">
+    <p> Warning!!<br>
+     &nbsp;&nbsp;&nbsp; {{d.validations[0].message}}</p>  
+  </div>
 </div>
 <!-- <app-server></app-server> -->
-  <button *ngIf="d.type=='button'">Submit</button>
+  <button [disabled]="!f.valid"*ngIf="d.type=='button'"class="sub" >Submit</button>
 
 </div>
 </form>
-<!-- (change)="getoptions($event)" -->
