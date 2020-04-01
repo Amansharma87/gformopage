@@ -24,7 +24,7 @@ export class AppComponent implements OnInit{
  
   ngOnInit(){
     
-      this.http.get('https://ca.platform.simplifii.xyz/api/v1/static/assignment4')
+      this.http.get('https://private-3aa94-questionnew.apiary-mock.com/questions')
       .subscribe(
         (response:any)=>{
           
